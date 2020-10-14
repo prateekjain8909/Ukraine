@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Poltava State Medical University</title>
+{% endblock %}
+
+{% block body %}
+
+<!-- =========================
+     NAVIGATION LINKS     
+============================== -->
+<div class="navbar navbar-fixed-top custom-navbar" role="navigation">
+	<div class="container">
+
+		<!-- navbar header -->
+		<div class="navbar-header">	
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>		
+			<a style="display: flex;justify-content: center;" class="navbar-brand">Admissions in Ukraine Universities</a>
+		</div>
+
+		<div class="collapse navbar-collapse">
+			<!-- <li><a href="/#contact" class="smoothScroll">Contact Us</a></li> -->
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/" class="smoothScroll">Home</a></li>
+				<li><a href="/college-predictor" class="smoothScroll">College Predictor</a></li>
+				<li class="dropdown">
+					<button class="dropbtn university">Universities</button>
+					<div class="dropdown-content">
+					  <a href="/ivano-frankivsk-national-medical-university">Ivano-Frankivsk National Medical University</a>
+					  <a href="/lviv-national-medical-university">Lviv National Medical University</a>
+					  <a href="/poltava-state-medical-university">Poltava State Medical University</a>
+					  <a href="/bogomolets-national-medical-university">Bogomolets National Medical University</a>
+					</div>
+				</li>
+				<li><a href="/gallery" class="smoothScroll">Gallery</a></li>
+				<li><a href="/#register" class="smoothScroll">Callback</a></li>
+				<li><a href="/#contact" class="smoothScroll">Contact Us</a></li>
+			</ul>
+        </div>
+
+
+	</div>
+</div>
+
+<!-- =========================
+    INTRO SECTION   
+============================== -->
+<section id="intro" class="intro">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-12 col-sm-12">
+				<a href="#overview" rel="nofollow"  class="btn btn-lg btn-default smoothScroll wow fadeInUp " data-wow-delay="1s">LEARN MORE</a>
+			</div>
+
+		</div>
+	</div>
+</section>
+        
+<!-- =========================
+    OVERVIEW SECTION   
+============================== --> 
+<section  id="overview" class="parallax-section">
+	<div class="container" >
+		<div class="row">
+
+			<div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="0.6s">
+				<h1>POLTAVA STATE MEDICAL UNIVERSITY</h1>
+				<p style="text-align: justify;">The Poltava State Medical University is situated in the Poltava city of Ukraine. It was established in the year 1921.
+					The university occupies 16 buildings including</p>
+					<ul>
+						<li>5 academic buildings</li>
+						<li>4 dormitories</li>
+						<li>Apartments</li>
+						<li>Vivarium</li>
+						<li>Library</li>
+						<li>Sports Complex</li>
+						<li>Dining room</li>
+						<li>Cafe</li>
+					</ul>
+					<p>PSMNU is recognized by</p>
+					<ul>
+						<li>European Association of Universities</li>
+						<li>World Health Organization (WHO)</li>
+						<li>I-MED School</li>
+						<li>Medical Council of India (MCI)</li>
+						<li>Medical Council of Nepal</li>
+						<li>PMDC</li>
+					</ul>
+					<p> As of 2004, PSMU had a level-IV accreditation</p>
+				<h3>Duration</h3>
+				<p style="text-align: justify;">Mbbs course duration is 5.8 years which also includes the internship.
+					In all medical universities in Ukraine, course duration for MBBS is 5.8 years.</p>
+				<h3>Eligibility</h3>
+				<p style="text-align: justify;"><ul >
+					<li>Student must complete their Secondary education with minimum 45% marks in PCB.</li>
+					<li>Minimum age to apply is 17 years by 31st December of the admission year</li>
+					<li>Must have qualified NEET exam</li>
+					<li>Only regular student can apply</li>
+				</ul></p>
+				<h3>Courses</h3>
+				<p><ul >
+					<li>General Medicine (MBBS)</li>
+					<li>Preventive Medicine</li>
+					<li>Paediatrics</li>
+					<li>Dentistry</li>
+					<li>Higher Nursing Education</li>
+				</ul></p>
+			</div>
+					
+			<div class="wow fadeInUp col-md-6 col-sm-6" style="padding-top: 3.7rem;" data-wow-delay="0.9s">
+			
+				<img width="100%" src="static/home/images/poltava.jpg" class="img-responsive" alt="Ivano-Frankivsk National Medical University">
+			</div>
+
+		</div>
+	</div>
+</section>
+<section id="map"> 
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 wow bounceIn" data-wow-delay="0.6s">
+				<div class="section-title">
+					<h2>Street View</h2>
+					<p>Have a look at the area your university is in. </p>
+					<label style="font-size: 2rem;">Select the part of the university you wants to view   </label>
+					<select class="custom-select custom-select-sm" id ="location" onchange="map_view()">
+						<option value="University">University</option>
+						<option value="Garden">Garden</option>
+						<option value="Building">Building</option>
+						<option value="Park">Park</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-12 col-sm-12 wow bounceIn" data-wow-delay="0.9s">				
+				<div id="map123">
+                    <iframe src="https://www.google.com/maps/embed?pb=!4v1602016978616!6m8!1m7!1sCAoSLEFGMVFpcE5mRnV1WXl0czE5WFRNaGxQS05tUUNvVXdQNEI1eUtPM3lVRXJ2!2m2!1d49.5823147!2d34.5474281!3f353.5889138747612!4f11.66236295773308!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	function map_view(){
+		var x = document.getElementById("location").value;
+		if(x === "University"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1602016978616!6m8!1m7!1sCAoSLEFGMVFpcE5mRnV1WXl0czE5WFRNaGxQS05tUUNvVXdQNEI1eUtPM3lVRXJ2!2m2!1d49.5823147!2d34.5474281!3f353.5889138747612!4f11.66236295773308!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+		else if(x === "Building"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1602016801902!6m8!1m7!1sCAoSLEFGMVFpcFBIbE12MnVIbFBTWDI1TjNoaWVsR1hXMWVQOUhsN0pKR1c4ZkdX!2m2!1d49.5814972!2d34.5508432!3f198.10748051385923!4f21.419584836026573!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+		else if(x === "Park"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1602168989730!6m8!1m7!1sCAoSLEFGMVFpcFBCM3JwX2FHbnNZWVY5VGlHZU9jUlpNMUw2UkpWcEdDV0RidWlV!2m2!1d49.5822515!2d34.5487384!3f357.0942015040078!4f4.625854820362207!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+		else if(x === "Garden"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1602169137669!6m8!1m7!1sCAoSLEFGMVFpcFAycTZxQzhWSlNKSFJsOTE4bTg1UUhkbm1QZGMxYmpBaldhX0Fx!2m2!1d49.5817645!2d34.550406!3f82.77155310213047!4f2.1969084574979263!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+	}
+</script>
+{% endblock %}

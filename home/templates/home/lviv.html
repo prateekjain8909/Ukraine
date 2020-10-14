@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% block head %}
+
+<title>Lviv National Medical University</title>
+{% endblock %}
+
+{% block body %}
+
+<!-- =========================
+     NAVIGATION LINKS     
+============================== -->
+<div class="navbar navbar-fixed-top custom-navbar" role="navigation">
+	<div class="container">
+
+		<!-- navbar header -->
+		<div class="navbar-header">	
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>		
+			<a style="display: flex;justify-content: center;" class="navbar-brand">Admissions in Ukraine Universities</a>
+		</div>
+
+		<div class="collapse navbar-collapse">
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/" class="smoothScroll">Home</a></li>
+				<li><a href="/college-predictor" class="smoothScroll">College Predictor</a></li>
+				<li class="dropdown">
+					<button class="dropbtn university">Universities</button>
+					<div class="dropdown-content">
+					  <a href="/ivano-frankivsk-national-medical-university">Ivano-Frankivsk National Medical University</a>
+					  <a href="/lviv-national-medical-university">Lviv National Medical University</a>
+					  <a href="/poltava-state-medical-university">Poltava State Medical University</a>
+					  <a href="/bogomolets-national-medical-university">Bogomolets National Medical University</a>
+					</div>
+				</li>
+				<li><a href="/gallery" class="smoothScroll">Gallery</a></li>
+				<li><a href="/#register" class="smoothScroll">Callback</a></li>
+				<li><a href="/#contact" class="smoothScroll">Contact Us</a></li>
+			</ul>
+        </div>
+
+
+	</div>
+</div>
+
+<!-- =========================
+    INTRO SECTION   
+============================== -->
+<section id="intro" class="intro">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-12 col-sm-12">
+				<a href="#overview" rel="nofollow"  class="btn btn-lg btn-default smoothScroll wow fadeInUp " data-wow-delay="1s">LEARN MORE</a>
+			</div>
+
+
+		</div>
+	</div>
+</section>
+        
+<!-- =========================
+    OVERVIEW SECTION   
+============================== --> 
+<section  id="overview" class="parallax-section">
+	<div class="container" >
+		<div class="row">
+
+			<div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="0.6s">
+				<h1>LVIV NATIONAL MEDICAL UNIVERSITY</h1>
+				<p style="text-align: justify;">LNMU is situated in the beautiful city of Lviv. It is one of the most beautiful cities of Ukraine.
+					The university was established in the year 1784. Every year it ranks amoung top 3 Medical universities of the Country.
+					In 2009, when the medical university celebrated its 225th anniversary since its foundation the Government of Ukraine launched a 5 Ukrainian Hryvnia Coin with the Seal, Name and Motto of the Medical University in the Honour and Respect of the Prestigious Institution.</p>
+				<h3>Duration</h3>
+				<p style="text-align: justify;">Mbbs course duration is 5.8 years which also includes the internship.
+					In all medical universities in Ukraine, course duration for MBBS is 5.8 years.</p>
+				<h3>Eligibility</h3>
+				<p style="text-align: justify;"><ul >
+					<li>Student must complete their Secondary education with minimum 45% marks in PCB.</li>
+					<li>Minimum age to apply is 17 years by 31st December of the admission year</li>
+					<li>Must have qualified NEET exam</li>
+					<li>Only regular student can apply</li>
+				</ul></p>
+				<h3>Courses</h3>
+				<p><ul >
+					<li>General Medicine (MBBS)</li>
+					<li>Preventive Medicine</li>
+					<li>Paediatrics</li>
+					<li>Dentistry</li>
+					<li>Higher Nursing Education</li>
+				</ul></p>
+			</div>
+					
+			<div class="wow fadeInUp col-md-6 col-sm-6" style="padding-top: 3.7rem;" data-wow-delay="0.9s">
+			
+				<img width="100%" src="static/home/images/lviv.png" class="img-responsive" alt="Ivano-Frankivsk National Medical University">
+			</div>
+
+		</div>
+	</div>
+</section>
+<section id="map"> 
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 wow bounceIn" data-wow-delay="0.6s">
+				<div class="section-title">
+					<h2>Google Maps</h2>
+					<p>Have a look at the area your university is in. </p>
+					<label style="font-size: 2rem;">Select the part of the university you wants to view   </label>
+					<select class="custom-select custom-select-sm" id ="location" onchange="map_view()">
+						<option value="University">University</option>
+						<option value="City">City</option>
+						<option value="Park">Park</option>
+						<option value="University Front">University Front</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-12 col-sm-12 wow bounceIn" data-wow-delay="0.9s">				
+				<div id="map123">
+                    <iframe src="https://www.google.com/maps/embed?pb=!4v1601957939529!6m8!1m7!1sCAoSLEFGMVFpcFBaNldGMjMyUXR1REgwQ3lteVRXV0VVejE3VFJMN2s4a2UtMzhX!2m2!1d49.8359896!2d24.0484607!3f202.4120777817552!4f-24.99629101569397!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	function map_view(){
+		var x = document.getElementById("location").value;
+		if(x === "University"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1601957939529!6m8!1m7!1sCAoSLEFGMVFpcFBaNldGMjMyUXR1REgwQ3lteVRXV0VVejE3VFJMN2s4a2UtMzhX!2m2!1d49.8359896!2d24.0484607!3f202.4120777817552!4f-24.99629101569397!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+		else if(x === "City"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1602168085368!6m8!1m7!1sCAoSLEFGMVFpcE5tV1U3cGduWWwwbmlPMFJWWkp0dy1rcnF0QlEtUjVDUXhuU3dy!2m2!1d49.8360443!2d24.047987!3f69.35407836796335!4f-43.35120816662176!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+		else if(x === "Park"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1602168365386!6m8!1m7!1sCAoSLEFGMVFpcE9IT205Z3hhM0FKal9LNlhPZzRvdFpfbk4zTUJyNVFGeW52VlY4!2m2!1d49.8357245!2d24.0480738!3f16.57624151456246!4f0.5746485443496852!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+		else if(x === "University Front"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1602168488038!6m8!1m7!1slXhdduuxmp_vKMhZtBNshg!2m2!1d49.83575631740713!2d24.04844188775544!3f358.9944677090283!4f12.713606437682216!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+	}
+</script>
+{% endblock %}

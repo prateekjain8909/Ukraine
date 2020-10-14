@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Thank Yor for Registering</title>
+{% endblock %}
+{% block body %}
+
+<!-- =========================
+     NAVIGATION LINKS     
+============================== -->
+<div class="navbar navbar-fixed-top custom-navbar" role="navigation">
+
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>						
+			<a style="display: flex;" href="#" rel="nofollow" class="navbar-brand">Admissions in Ukraine Universities</a>
+		</div>
+
+		<div class="collapse navbar-collapse">
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/" class="smoothScroll">Home</a></li>
+				<li><a href="/college-predictor" class="smoothScroll">College Predictor</a></li>
+				<li class="dropdown">
+					<button class="dropbtn university">Universities</button>
+					<div class="dropdown-content">
+					  <a href="/ivano-frankivsk-national-medical-university">Ivano-Frankivsk National Medical University</a>
+					  <a href="/lviv-national-medical-university">Lviv National Medical University</a>
+					  <a href="/poltava-state-medical-university">Poltava State Medical University</a>
+					  <a href="/bogomolets-national-medical-university">Bogomolets National Medical University</a>
+					</div>
+				</li>
+				<li><a href="/gallery" class="smoothScroll">Gallery</a></li>
+				<li><a href="/#register" class="smoothScroll">Callback</a></li>
+				<li><a href="/#contact" class="smoothScroll">Contact Us</a></li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+
+<!-- =========================
+    INTRO SECTION   
+============================== -->
+<section id="intro" class="intro">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-12 col-sm-12">
+				<h3  class="wow bounceIn" data-wow-delay="0.9s">THANK YOU FOR REGISTERING</h3>
+				<h1  class="wow fadeInUp" data-wow-delay="1.6s">WE WILL CONTACT YOU SOON</h1>
+				<a href="/"><button class="btn btn-lg btn-danger smoothScroll wow fadeInUp">Go back to homepage
+				</button></a>
+			</div>
+
+
+		</div>
+	</div>
+</section>
+
+{% endblock %}

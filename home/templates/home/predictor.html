@@ -1,0 +1,429 @@
+{% extends 'base.html' %}
+{% block head %}
+
+<title>College Predictor</title>
+<style>
+
+    #myInput {
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+      width: 100%;
+      font-size: 16px;
+      padding: 12px 20px 12px 40px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+    }
+    
+    table {
+        table-layout: auto;
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ddd;
+    }
+    
+    
+    p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        text-align: center;
+    }
+    
+    table thead th {
+        padding: 10px;
+        text-align: center;
+        border: 4px solid black;
+        border-collapse: collapse;
+        border-color: rgb(210,210,210);
+        vertical-align: center;
+        min-width: 150px !important;
+    }
+    
+    #myTable tr td:nth-child(1) { width: 300px;
+    min-width: 300px; }
+    
+    table tbody tr td {
+        padding: 10px;
+        text-align: center;
+        border: 2px solid black;
+        border-collapse: collapse;
+        border-color: rgb(224, 224, 224);
+        vertical-align: center;
+    }
+    
+    
+    
+    th[scope=row] {
+      position: -webkit-sticky;
+      position: sticky;
+      left: 0;
+      z-index: 1;
+    }
+    
+    tr:nth-child(even){background-color: #f2f2f2}
+    
+        </style>
+    
+{% endblock %}
+
+{% block body %}
+
+<!-- =========================
+     NAVIGATION LINKS     
+============================== -->
+<div class="navbar navbar-fixed-top custom-navbar" role="navigation">
+	<div class="container">
+
+		<!-- navbar header -->
+		<div class="navbar-header">	
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>		
+			<a style="display: flex;justify-content: center;" class="navbar-brand">Admissions in Ukraine Universities</a>
+		</div>
+
+		<div class="collapse navbar-collapse">
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/" class="smoothScroll">Home</a></li>
+				<li><a href="/college-predictor" class="smoothScroll">College Predictor</a></li>
+				<li class="dropdown">
+					<button class="dropbtn university">Universities</button>
+					<div class="dropdown-content">
+					  <a href="/ivano-frankivsk-national-medical-university">Ivano-Frankivsk National Medical University</a>
+					  <a href="/lviv-national-medical-university">Lviv National Medical University</a>
+					  <a href="/poltava-state-medical-university">Poltava State Medical University</a>
+					  <a href="/bogomolets-national-medical-university">Bogomolets National Medical University</a>
+					</div>
+				</li>
+				<li><a href="/gallery" class="smoothScroll">Gallery</a></li>
+				<li><a href="/#register" class="smoothScroll">Callback</a></li>
+				<li><a href="/#contact" class="smoothScroll">Contact Us</a></li>
+			</ul>
+        </div>
+
+
+	</div>
+</div>
+
+<!-- =========================
+    INTRO SECTION   
+============================== -->
+<section id="intro" class="intro">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-12 col-sm-12">
+				<a href="#table" rel="nofollow"  class="btn btn-lg btn-default smoothScroll wow fadeInUp " data-wow-delay="1s">Predict</a>
+			</div>
+
+
+		</div>
+	</div>
+</section>
+    
+<!-- =========================
+    OVERVIEW SECTION   
+============================== --> 
+<section  id="table" class="parallax-section">
+	<div class="container" >
+		<div class="row" >
+
+            <h2>NEET 2019 Cutoffs for Government Colleges</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {% if user %}
+                <select required name="round" id ="round">
+                    <option value="" disabled selected hidden>Select Councelling Round</option>
+                    <option value="Round-1">Round-1</option>
+                    <option value="Round-2">Round-2</option>
+                    <option value="Mop up">Mop up</option>
+                </select>
+                <select required id ="state" name ="state">
+                    <option value="" disabled selected hidden>Select State</option>
+                    <option value="ANDAMAN AND NICOBAR">Andaman And Nicobar</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="CHANDIGAR">Chandigar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                </select>
+                <select required id ="course" name ="course">
+                    <option value="" disabled selected hidden>Select Course</option>
+                    <option value="MBBS">MBBS</option>
+                    <option value="BDS">BDS</option>
+                </select>
+                {% endif %}
+                {% if not user %}
+                <input placeholder="Name" required name = "name" type="name">
+                <input placeholder="Number" required name = "number" type="number">
+                <input placeholder="Email" required name="email" type="email">
+                {% endif %}
+                <button>Submit</button>
+            </form>
+            <br>
+
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="&#128270; Search for college.." title="Type in a name">
+		</div>
+            <div class="row" style="overflow-x: scroll; overflow-y: scroll;">
+                <table id="myTable" border="1" >
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <tr>
+                        <th rowspan="2"><p><strong>COLLEGE</strong></p></th>
+                        <th rowspan="2"><p><strong>REGION</strong></p></th>
+                        <th rowspan="2"><p><strong>QUOTA</strong></p></th>
+                        <th colspan="3"><p><strong>GEN</strong></p></th>
+                        <th colspan="3"><p><strong>OBC</strong></p></th>
+                        <th colspan="3"><p><strong>SC</strong></p></th>
+                        <th colspan="3"><p><strong>ST</strong></p></th>
+                        {% if sample == 'round-1' %}
+                            <th colspan="3"><p dir="ltr"><strong>GEN-PWD</strong></p></th>
+                            <th colspan="3"><p dir="ltr"><strong>OBC-PWD</strong></p></th>
+                            <th colspan="3"><p dir="ltr"><strong>SC-PWD</strong></p></th>
+                            <th colspan="3"><p dir="ltr"><strong>ST-PWD</strong></p></th>
+                        {% endif %}
+                        {% if sample == 'round-2' %}
+                            <th colspan="3"><p dir="ltr"><strong>GEN-PWD</strong></p></th>
+                            <th colspan="3"><p dir="ltr"><strong>OBC-PWD</strong></p></th>
+                            <th colspan="3"><p dir="ltr"><strong>SC-PWD</strong></p></th>
+                            <th colspan="3"><p dir="ltr"><strong>ST-PWD</strong></p></th>
+                            <th colspan="3"><p dir="ltr"><strong>EWS</strong></p></th>
+                        {% endif %}
+                        {% if sample == 'mopup' %}
+                            <th colspan="3"><p dir="ltr"><strong>GEN-PWD</strong></p></th>
+                            <th colspan="3"><p dir="ltr"><strong>OBC-PWD</strong></p></th>
+                            <th colspan="3"><p dir="ltr"><strong>EWS</strong></p></th>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th><p><strong>OR</strong></p></th>
+                        <th><p>CR</p></th>
+                        <th><p><strong>SEAT</strong></p></th>
+                        <th onclick="sortTable(7)"><p><strong>OR</strong></p></th>
+                        <th><p><strong>CR</strong></p></th>
+                        <th><p><strong>SEAT</strong></p></th>
+                        <th onclick="sortTable(10)"><p><strong>OR</strong></p></th>
+                        <th><p><strong>CR</strong></p></th>
+                        <th><p><strong>SEAT</strong></p></th>
+                        <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                        <th><p><strong>CR</strong></p></th>
+                        <th><p><strong>SEAT</strong></p></th>
+                        {% if sample == 'round-1' %}
+
+                          <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                          <th><p><strong>CR</strong></p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+
+                          <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                          <th><p><strong>CR</strong></p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+
+                          <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                          <th><p><strong>CR</strong></p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+
+                          <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                          <th><p><strong>CR</strong></p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+
+                        {% endif %}
+                        {% if sample == 'round-2' %}
+
+                          <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                          <th><p><strong>CR</strong></p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+
+                          <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                          <th><p><strong>CR</strong></p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+
+                          <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                          <th><p><strong>CR</strong></p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+
+                          <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                          <th><p><strong>CR</strong></p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+
+                          <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                          <th><p><strong>CR</strong></p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+
+                        {% endif %}
+                        {% if sample == 'mopup' %}
+
+                          <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                          <th><p><strong>CR</strong></p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+
+                          <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                          <th><p><strong>CR</strong></p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+
+                          <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
+                          <th><p><strong>CR</strong></p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+
+                        {% endif %}
+                    </tr>
+                    <tbody>
+                        {% for college in colleges %}
+                        <tr>
+                            <td><p>{{college}}</p></td>
+                            <td><p>{{college.region}}</p></td>
+                            <td><p>{{college.quota}}</p></td>
+                            <td><p>{{college.gn_or}}</p></td>
+                            <td><p>{{college.gn_cr}}</p></td>
+                            <td><p>{{college.gn_seats}}</p></td>
+                            <td><p>{{college.obc_or}}</p></td>
+                            <td><p>{{college.obc_cr}}</p></td>
+                            <td><p>{{college.obc_seats}}</p></td>
+                            <td><p>{{college.sc_or}}</p></td>
+                            <td><p>{{college.sc_cr}}</p></td>
+                            <td><p>{{college.sc_seats}}</p></td>
+                            <td><p>{{college.st_or}}</p></td>
+                            <td><p>{{college.st_cr}}</p></td>
+                            <td><p>{{college.st_seats}}</p></td>
+                            {% if sample == 'round-1' %}
+
+                                <td><p>{{college.gn_pwd_or}}</p></td>
+                                <td><p>{{college.gn_pwd_cr}}</p></td>
+                                <td><p>{{college.gn_pwd_seats}}</p></td>
+                                <td><p>{{college.obc_pwd_or}}</p></td>
+                                <td><p>{{college.obc_pwd_cr}}</p></td>
+                                <td><p>{{college.obc_pwd_seats}}</p></td>
+                                <td><p>{{college.sc_pwd_or}}</p></td>
+                                <td><p>{{college.sc_pwd_cr}}</p></td>
+                                <td><p>{{college.sc_pwd_seats}}</p></td>
+                                <td><p>{{college.st_pwd_or}}</p></td>
+                                <td><p>{{college.st_pwd_cr}}</p></td>
+                                <td><p>{{college.st_pwd_seats}}</p></td>
+
+                            {% endif %}
+                            {% if sample == 'round-2' %}
+
+                                <td><p>{{college.gn_pwd_or}}</p></td>
+                                <td><p>{{college.gn_pwd_cr}}</p></td>
+                                <td><p>{{college.gn_pwd_seats}}</p></td>
+                                <td><p>{{college.obc_pwd_or}}</p></td>
+                                <td><p>{{college.obc_pwd_cr}}</p></td>
+                                <td><p>{{college.obc_pwd_seats}}</p></td>
+                                <td><p>{{college.sc_pwd_or}}</p></td>
+                                <td><p>{{college.sc_pwd_cr}}</p></td>
+                                <td><p>{{college.sc_pwd_seats}}</p></td>
+                                <td><p>{{college.st_pwd_or}}</p></td>
+                                <td><p>{{college.st_pwd_cr}}</p></td>
+                                <td><p>{{college.st_pwd_seats}}</p></td>
+                                <td><p>{{college.ew_or}}</p></td>
+                                <td><p>{{college.ew_cr}}</p></td>
+                                <td><p>{{college.ew_seats}}</p></td>
+
+                            {% endif %}
+                            {% if sample == 'mopup' %}
+
+                                <td><p>{{college.gn_pwd_or}}</p></td>
+                                <td><p>{{college.gn_pwd_cr}}</p></td>
+                                <td><p>{{college.gn_pwd_seats}}</p></td>
+                                <td><p>{{college.obc_pwd_or}}</p></td>
+                                <td><p>{{college.obc_pwd_cr}}</p></td>
+                                <td><p>{{college.obc_pwd_seats}}</p></td>
+                                <td><p>{{college.ew_or}}</p></td>
+                                <td><p>{{college.ew_cr}}</p></td>
+                                <td><p>{{college.ew_seats}}</p></td>
+
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+		</div>
+	</div>
+</section>
+
+<script>
+
+    function sortTable(n) {
+      var table, rows, switching, i, x, y, shouldSwitch;
+      table = document.getElementById("myTable");
+      switching = true;
+      while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 3; i < (rows.length - 1); i++) {
+          shouldSwitch = false;
+          x = rows[i].getElementsByTagName("td")[n];
+          y = rows[i + 1].getElementsByTagName("td")[n];
+          if (Number(x.innerHTML) > Number(y.innerHTML)) {
+            shouldSwitch = true;
+            break;
+          }
+        }
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+        }
+      }
+    }
+    
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
+    
+    </script>
+{% endblock %}

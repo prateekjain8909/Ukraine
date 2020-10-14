@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block head %}
+
+<title>Bogomolets National Medical University</title>
+{% endblock %}
+
+{% block body %}
+
+<!-- =========================
+     NAVIGATION LINKS     
+============================== -->
+<div class="navbar navbar-fixed-top custom-navbar" role="navigation">
+	<div class="container">
+
+		<!-- navbar header -->
+		<div class="navbar-header">	
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>		
+			<a style="display: flex;justify-content: center;" class="navbar-brand">Admissions in Ukraine Universities</a>
+		</div>
+
+		<div class="collapse navbar-collapse">
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/" class="smoothScroll">Home</a></li>
+				<li><a href="/college-predictor" class="smoothScroll">College Predictor</a></li>
+				<li class="dropdown">
+					<button class="dropbtn university">Universities</button>
+					<div class="dropdown-content">
+					  <a href="/ivano-frankivsk-national-medical-university">Ivano-Frankivsk National Medical University</a>
+					  <a href="/lviv-national-medical-university">Lviv National Medical University</a>
+					  <a href="/poltava-state-medical-university">Poltava State Medical University</a>
+					  <a href="/bogomolets-national-medical-university">Bogomolets National Medical University</a>
+					</div>
+				</li>
+				<li><a href="/gallery" class="smoothScroll">Gallery</a></li>
+				<li><a href="/#register" class="smoothScroll">Callback</a></li>
+				<li><a href="/#contact" class="smoothScroll">Contact Us</a></li>
+			</ul>
+        </div>
+
+
+	</div>
+</div>
+
+<!-- =========================
+    INTRO SECTION   
+============================== -->
+<section id="intro" class="intro">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-12 col-sm-12">
+				<a href="#overview" rel="nofollow"  class="btn btn-lg btn-default smoothScroll wow fadeInUp " data-wow-delay="1s">LEARN MORE</a>
+			</div>
+
+
+		</div>
+	</div>
+</section>
+        
+<!-- =========================
+    OVERVIEW SECTION   
+============================== --> 
+<section  id="overview" class="parallax-section">
+	<div class="container" >
+		<div class="row">
+
+			<div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="0.6s">
+				<h1>BOGOMOLETS NATIONAL MEDICAL UNIVERSITY</h1>
+				<p style="text-align: justify;">It was founded in the year 1841. The university is named after physiologist Alexander A. Bogomolets. The university provides medical training for over 10,000 students, including about 1,300 foreigners from 56 countries. 
+					It is one of the best medical universities in Ukraine.
+					Among its 1,500 teaching staff, 855 are PhD and 205 Doctors of Sciences. So the education quality is topmost in this University</p>
+				<h3>Duration</h3>
+				<p style="text-align: justify;">Mbbs course duration is 5.8 years which also includes the internship.
+					In all medical universities in Ukraine, course duration for MBBS is 5.8 years.</p>
+				<h3>Eligibility</h3>
+				<p style="text-align: justify;"><ul >
+					<li>Student must complete their Secondary education with minimum 45% marks in PCB.</li>
+					<li>Minimum age to apply is 17 years by 31st December of the admission year</li>
+					<li>Must have qualified NEET exam</li>
+					<li>Only regular student can apply</li>
+				</ul></p>
+				<h3>Courses</h3>
+				<p><ul >
+					<li>General Medicine (MBBS)</li>
+					<li>Preventive Medicine</li>
+					<li>Paediatrics</li>
+					<li>Dentistry</li>
+					<li>Higher Nursing Education</li>
+				</ul></p>
+			</div>
+					
+			<div class="wow fadeInUp col-md-6 col-sm-6" style="padding-top: 3.7rem;" data-wow-delay="0.9s">
+			
+				<img width="100%" src="static/home/images/bogo.jpg" class="img-responsive" alt="Ivano-Frankivsk National Medical University">
+			</div>
+
+		</div>
+	</div>
+</section>
+<section id="map"> 
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 wow bounceIn" data-wow-delay="0.6s">
+				<div class="section-title">
+					<h2>Street View</h2>
+					<p>Have a look at the area your university is in. </p>
+					<label style="font-size: 2rem;">Select the part of the university you wants to view   </label>
+					<select class="custom-select custom-select-sm" id ="location" onchange="map_view()">
+						<option value="University">University</option>
+						<option value="Park">Park</option>
+						<option value="Church">Church</option>
+						<option value="Street">Street</option>
+						<option value="Football Ground">Football Ground</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-12 col-sm-12 wow bounceIn" data-wow-delay="0.9s">				
+				<div id="map123">
+                    <iframe src="https://www.google.com/maps/embed?pb=!4v1602017697488!6m8!1m7!1syMWx0jAm9Xq-q4a0kRyewA!2m2!1d50.45264818027942!2d30.45782940574041!3f14.043083398388315!4f14.122015811220834!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	function map_view(){
+		var x = document.getElementById("location").value;
+		if(x === "University"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1602017697488!6m8!1m7!1syMWx0jAm9Xq-q4a0kRyewA!2m2!1d50.45264818027942!2d30.45782940574041!3f14.043083398388315!4f14.122015811220834!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+		else if(x === "Football Ground"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1602169465317!6m8!1m7!1sCAoSLEFGMVFpcE42T0pZWVdGbkthZ1hiSldrQnEzNkhiZGQzQTk1MUllVVliMVpt!2m2!1d50.45478929999999!2d30.4587993!3f81.72425895005084!4f3.932151500508951!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+		else if(x === "Church"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1602169596752!6m8!1m7!1sCAoSLEFGMVFpcE9weUZMREN3WnpUUE5fNkExcW9vZU80RjE5WmQySFN5eDctSi1s!2m2!1d50.45466680000001!2d30.456423!3f302.17664575290854!4f20.05400220395569!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+		else if(x === "Street"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1602169730165!6m8!1m7!1sCAoSLEFGMVFpcE83VjVhMVlsWWlISG5ZclZ6VkJqaVdySDhzX0xDSE44M1ZYNWI3!2m2!1d50.45702259999999!2d30.4602528!3f345.42690877244695!4f-16.78579658203867!5f1.039466379348243" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+		else if(x === "Park"){document.getElementById("map123").innerHTML = '<iframe src="https://www.google.com/maps/embed?pb=!4v1602169798705!6m8!1m7!1sCAoSK0FGMVFpcE1jN0JZOGVfWk00WDkzVk15YWc4VW0tdzJPcGhKb0VvUXhya0E.!2m2!1d50.4572105!2d30.4559975!3f85.40051352657238!4f8.81801095742722!5f0.7820865974627469" width="100%" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'}
+	}
+</script>
+{% endblock %}
