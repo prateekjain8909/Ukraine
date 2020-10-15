@@ -93,18 +93,27 @@
 				<span class="icon icon-bar"></span>
 				<span class="icon icon-bar"></span>
 				<span class="icon icon-bar"></span>
-			</button>		
-			<a style="display: flex;justify-content: center;" class="navbar-brand">Admissions in Ukraine Universities</a>
+      </button>	
+      	
+			<a href="/"><img class="company_logo" src="static/home/images/Logodescription.png"></a>
 		</div>
 
 		<div class="collapse navbar-collapse">
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/" class="smoothScroll">Home</a></li>
-				<li><a href="/college-predictor" class="smoothScroll">College Predictor</a></li>
+				
+				<li class="dropdown">
+          <button class=" dropbtn university">NEET</button>
+          <div class="dropdown-content1">
+            <a href="/college-predictor" class="smoothScroll">College Predictor</a>
+            <a href="/previous-year-cutoffs" class="smoothScroll">Previous Year Cutoffs</a>
+          </div>
+        </li>
 				<li class="dropdown">
 					<button class="dropbtn university">Universities</button>
 					<div class="dropdown-content">
+					  
 					  <a href="/ivano-frankivsk-national-medical-university">Ivano-Frankivsk National Medical University</a>
 					  <a href="/lviv-national-medical-university">Lviv National Medical University</a>
 					  <a href="/poltava-state-medical-university">Poltava State Medical University</a>
@@ -163,7 +172,7 @@
                 </select>
                 <select required id ="cast" name ="cast">
                     <option value="" disabled selected hidden>Caste Group</option>
-                    <option value="ews">Economically Weker Section</option>
+                    <!-- <option value="ews">Economically Weaker Section</option> -->
                     <option value="gen">General</option>
                     <option value="obc">Other Backward Classes</option>
                     <option value="sc">Scheduled Caste</option>
@@ -196,82 +205,121 @@
                     <col width="auto">
                     <col width="auto">
                     <tr>
+                        <!-- <th rowspan="2"><p><strong>COUNCELLING ROUND</strong></p></th> -->
                         <th rowspan="2"><p><strong>COLLEGE</strong></p></th>
+                        <th rowspan="2"><p><strong>STATE</strong></p></th>
                         <th rowspan="2"><p><strong>REGION</strong></p></th>
-                        <!-- <th rowspan="2"><p><strong>COURSE</strong></p></th> -->
                         <th rowspan="2"><p><strong>QUOTA</strong></p></th>
-                        <th colspan="3"><p><strong>GEN</strong></p></th>
-                        <th colspan="3"><p><strong>OBC</strong></p></th>
-                        <th colspan="3"><p><strong>SC</strong></p></th>
-                        <th colspan="3"><p><strong>ST</strong></p></th>
+                        {% if category == 'gen' or category == 'gn_pwd' %}
+                          <th colspan="3"><p><strong>GEN</strong></p></th>
+                        {% endif %}
+                        {% if category == 'obc' or category == 'obc_pwd' %}
+                          <th colspan="3"><p><strong>OBC</strong></p></th>
+                        {% endif %}
+                        {% if category == 'sc' or category == 'sc_pwd' %}
+                          <th colspan="3"><p><strong>SC</strong></p></th>
+                        {% endif %}
+                        {% if category == 'st' or category == 'st_pwd' %}
+                          <th colspan="3"><p><strong>ST</strong></p></th>
                         
-                        <th colspan="3"><p dir="ltr"><strong>GEN-PWD</strong></p></th>
-                        <th colspan="3"><p dir="ltr"><strong>OBC-PWD</strong></p></th>
-                        <th colspan="3"><p dir="ltr"><strong>SC-PWD</strong></p></th>
-                        <th colspan="3"><p dir="ltr"><strong>ST-PWD</strong></p></th>
-                        <th colspan="3"><p dir="ltr"><strong>EWS</strong></p></th>
-                        <!-- <th colspan="3"><p><strong>EWS</strong></p></th> -->
+                        {% endif %}
+                        {% if category == 'gn_pwd' %}
+                          <th colspan="3"><p dir="ltr"><strong>GEN-PWD</strong></p></th>
+                        {% endif %}
+                        {% if category == 'obc_pwd' %}
+                          <th colspan="3"><p dir="ltr"><strong>OBC-PWD</strong></p></th>
+                        {% endif %}
+                        {% if category == 'sc_pwd' %}
+                          <th colspan="3"><p dir="ltr"><strong>SC-PWD</strong></p></th>
+                        {% endif %}
+                        {% if category == 'st_pwd' %}
+                          <th colspan="3"><p dir="ltr"><strong>ST-PWD</strong></p></th>
+                        {% endif %}
+                        {% if category == 'ews' %}
+                          <th colspan="3"><p dir="ltr"><strong>EWS</strong></p></th>
+                        {% endif %}
                     </tr>
                     <tr>
                         <th><p><strong>OR</strong></p></th>
                         <th><p>CR</p></th>
                         <th><p><strong>SEAT</strong></p></th>
-                        <th onclick="sortTable(7)"><p><strong>OR</strong></p></th>
-                        <th><p><strong>CR</strong></p></th>
-                        <th><p><strong>SEAT</strong></p></th>
-                        <th onclick="sortTable(10)"><p><strong>OR</strong></p></th>
-                        <th><p><strong>CR</strong></p></th>
-                        <th><p><strong>SEAT</strong></p></th>
-                        <th onclick="sortTable(13)"><p><strong>OR</strong></p></th>
-                        <th><p><strong>CR</strong></p></th>
-                        <th><p><strong>SEAT</strong></p></th>
-
-                        <!-- <th onclick="sortTable(16)"><p><strong>OR</strong></p></th>
-                        <th><p><strong>CR</strong></p></th>
-                        <th><p><strong>SEAT</strong></p></th> -->
+                        {% if category == 'gn_pwd' or category == 'obc_pwd' or category == 'sc_pwd' or category == 'st_pwd' %}
+                          <th><p><strong>OR</strong></p></th>
+                          <th><p>CR</p></th>
+                          <th><p><strong>SEAT</strong></p></th>
+                        {% endif %}
                     </tr>
                     <tbody>
                         {% for college in colleges %}
                         <tr>
+                            <!-- <td><p>{{round}}</p></td> -->
                             <td><p>{{college}}</p></td>
+                            <td><p>{{college.state}}</p></td>
                             <td><p>{{college.region}}</p></td>
-                            <!-- <td><p>NAHHHIII</p></td> -->
                             <td><p>{{college.quota}}</p></td>
-                            <!-- <td><p>{{college.gn_or}}</p></td>
-                            <td><p>{{college.gn_cr}}</p></td>
-                            <td><p>{{college.gn_seats}}</p></td>
-                            <td><p>{{college.obc_or}}</p></td>
-                            <td><p>{{college.obc_cr}}</p></td>
-                            <td><p>{{college.obc_seats}}</p></td>
-                            <td><p>{{college.sc_or}}</p></td>
-                            <td><p>{{college.sc_cr}}</p></td>
-                            <td><p>{{college.sc_seats}}</p></td>
-                            <td><p>{{college.st_or}}</p></td>
-                            <td><p>{{college.st_cr}}</p></td>
-                            <td><p>{{college.st_seats}}</p></td>
+                            {% if category == 'gen' or category == 'gn_pwd' %}
 
+                              <td><p>{{college.gn_or}}</p></td>
+                              <td><p>{{college.gn_cr}}</p></td>
+                              <td><p>{{college.gn_seats}}</p></td>
 
-                            <td><p>{{college.gn_pwd_or}}</p></td>
-                            <td><p>{{college.gn_pwd_cr}}</p></td>
-                            <td><p>{{college.gn_pwd_seats}}</p></td>
-                            <td><p>{{college.obc_pwd_or}}</p></td>
-                            <td><p>{{college.obc_pwd_cr}}</p></td>
-                            <td><p>{{college.obc_pwd_seats}}</p></td>
-                            <td><p>{{college.sc_pwd_or}}</p></td>
-                            <td><p>{{college.sc_pwd_cr}}</p></td>
-                            <td><p>{{college.sc_pwd_seats}}</p></td>
-                            <td><p>{{college.st_pwd_or}}</p></td>
-                            <td><p>{{college.st_pwd_cr}}</p></td>
-                            <td><p>{{college.st_pwd_seats}}</p></td>
+                            {% endif %}
+                            {% if category == 'obc' or category == 'obc_pwd' %}
 
-                            <td><p>{{college.ew_or}}</p></td>
-                            <td><p>{{college.ew_cr}}</p></td>
-                            <td><p>{{college.ew_seats}}</p></td>
+                              <td><p>{{college.obc_or}}</p></td>
+                              <td><p>{{college.obc_cr}}</p></td>
+                              <td><p>{{college.obc_seats}}</p></td>
 
-                            <td><p>{{college.ew_or}}</p></td>
-                            <td><p>{{college.ew_cr}}</p></td>
-                            <td><p>{{college.ew_seats}}</p></td> -->
+                            {% endif %}
+                            {% if category == 'sc' or category == 'sc_pwd' %}
 
+                              <td><p>{{college.sc_or}}</p></td>
+                              <td><p>{{college.sc_cr}}</p></td>
+                              <td><p>{{college.sc_seats}}</p></td>
+
+                            {% endif %}
+                            {% if category == 'st' or category == 'st_pwd' %}
+
+                              <td><p>{{college.st_or}}</p></td>
+                              <td><p>{{college.st_cr}}</p></td>
+                              <td><p>{{college.st_seats}}</p></td>
+
+                            {% endif %}
+                            {% if category == 'ews' %}
+
+                              <td><p>{{college.ew_or}}</p></td>
+                              <td><p>{{college.ew_cr}}</p></td>
+                              <td><p>{{college.ew_seats}}</p></td>
+
+                            {% endif %}
+                            {% if category == 'gn_pwd' %}
+
+                              <td><p>{{college.gn_pwd_or}}</p></td>
+                              <td><p>{{college.gn_pwd_cr}}</p></td>
+                              <td><p>{{college.gn_pwd_seats}}</p></td>
+
+                            {% endif %}
+                            {% if category == 'obc_pwd' %}
+
+                              <td><p>{{college.obc_pwd_or}}</p></td>
+                              <td><p>{{college.obc_pwd_cr}}</p></td>
+                              <td><p>{{college.obc_pwd_seats}}</p></td>
+
+                            {% endif %}
+                            {% if category == 'sc_pwd' %}
+
+                              <td><p>{{college.sc_pwd_or}}</p></td>
+                              <td><p>{{college.sc_pwd_cr}}</p></td>
+                              <td><p>{{college.sc_pwd_seats}}</p></td>
+
+                            {% endif %}
+                            {% if category == 'st_pwd' %}
+
+                              <td><p>{{college.st_pwd_or}}</p></td>
+                              <td><p>{{college.st_pwd_cr}}</p></td>
+                              <td><p>{{college.st_pwd_seats}}</p></td>
+
+                            {% endif %}
                             
                         </tr>
                         {% endfor %}

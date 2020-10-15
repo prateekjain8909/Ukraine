@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^lviv-national-medical-university$', views.lviv),
     url(r'^bogomolets-national-medical-university$', views.bogo),
     # url(r'^1',views.data)
-    url(r'college-predictor',views.predictor),
+    url(r'previous-year-cutoffs',views.predictor),
+    url(r'college-predictor',views.college_predictor),
 ]
