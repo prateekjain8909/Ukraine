@@ -30,7 +30,7 @@ DEBUG = True
 # stop the port - sudo fuser -k 8000/tcp
 
 # ALLOWED_HOSTS = ["django-env.eba-jmgiayec.ap-south-1.elasticbeanstalk.com","admissionsinukraine.com","www.admissionsinukraine.com"]
-ALLOWED_HOSTS = [".vercel.app"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
