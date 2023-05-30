@@ -30,7 +30,7 @@ DEBUG = True
 # stop the port - sudo fuser -k 8000/tcp
 
 # ALLOWED_HOSTS = ["django-env.eba-jmgiayec.ap-south-1.elasticbeanstalk.com","admissionsinukraine.com","www.admissionsinukraine.com"]
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [".vercel.app"]
 
 
 # Application definition
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Ukraine.wsgi.application'
+WSGI_APPLICATION = 'Ukraine.wsgi.app'
 
 
 # Database
@@ -81,14 +81,14 @@ WSGI_APPLICATION = 'Ukraine.wsgi.application'
 
 DATABASES = {    
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd3i9qdh5f5qhi8',
-        'USER': 'hvarqvytzczdhg',
-        'PASSWORD': '81ba94f231ce3f1cce31074bc24c66527aa213d4c6154a500bc49216d1d1c46a',
-        'HOST': 'ec2-52-72-34-184.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'd3i9qdh5f5qhi8',
+        # 'USER': 'hvarqvytzczdhg',
+        # 'PASSWORD': '81ba94f231ce3f1cce31074bc24c66527aa213d4c6154a500bc49216d1d1c46a',
+        # 'HOST': 'ec2-52-72-34-184.compute-1.amazonaws.com',
+        # 'PORT': '5432',
     }
 }
 
@@ -130,7 +130,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
-# STATICFILES_DIR = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'static'),
+]

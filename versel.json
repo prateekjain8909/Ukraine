@@ -1,0 +1,14 @@
+{
+    "builds": [{
+        "src": "Ukraine/wsgi.py",
+        "use": "@versel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }],
+    
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "Ukraine/wsgi.py"
+        }
+    ]
+}
