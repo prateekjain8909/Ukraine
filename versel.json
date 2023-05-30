@@ -10,5 +10,8 @@
             "src": "/(.*)",
             "dest": "Ukraine/wsgi.py"
         }
-    ]
+    ],
+    
+    "rewrites": [{ "source": "/(.*)", "destination": "Ukraine/wsgi.py" }]
+
 }
